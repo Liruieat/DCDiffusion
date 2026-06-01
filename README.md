@@ -206,4 +206,3 @@ Main dependencies:
 ### Data Files
 - `data/puma/train.txt`: PUMA training set split
 - `data/puma/test.txt`: PUMA test set split
-# DCDiffusion
