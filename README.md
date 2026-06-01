@@ -17,9 +17,9 @@ This project leverages state-of-the-art diffusion model techniques to generate s
 
 The DCDiffusion framework supports the following medical image datasets:
 
-- **CoNSeP**: Colorectal tissue nuclei dataset
-- **GLySAC**: Gastric cancer tissue nuclei dataset
-- **PUMA**: Melanoma tissue nuclei dataset
+- **[CoNSeP](https://websignon.warwick.ac.uk/origin/slogin?shire=https%3A%2F%2Fwarwick.ac.uk%2Fsitebuilder2%2Fshire-read&providerId=urn%3Awarwick.ac.uk%3Asitebuilder2%3Aread%3Aservice&target=https%3A%2F%2Fwarwick.ac.uk%2Ffac%2Fcross_fac%2Ftia%2Fdata%2Fhovernet%2F&status=notloggedin)**: Colorectal tissue nuclei dataset
+- **[GLySAC](https://drive.google.com/file/d/1g1_xYFWgp3cRLKrlSwD2U5JDjooC0yHp/view?pli=1)**: Gastric cancer tissue nuclei dataset
+- **[PUMA](https://puma.grand-challenge.org/dataset/)**: Melanoma tissue nuclei dataset
 
 ### Dataset Information
 
