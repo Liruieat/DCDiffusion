@@ -47,8 +47,8 @@ The project includes the official PUMA dataset split:
 
 ```
 data/puma/
-├── train.txt          # Training set image list (5655 bytes)
-└── test.txt           # Test set image list (1452 bytes)
+├── train.txt          # Training set image list
+└── test.txt           # Test set image list
 ```
 
 - **Training set**: Used for training diffusion models and downstream segmentation models
@@ -57,7 +57,7 @@ data/puma/
 ## Project Structure
 
 ```
-work3/
+DCDiffusion/
 ├── code/                        # Source code directory
 │   ├── datasets/                # Dataset loaders
 │   │   ├── consep_sme.py       # CoNSeP dataset
@@ -66,18 +66,24 @@ work3/
 │   │   └── ...
 │   ├── imagen_pytorch/          # Diffusion model implementation
 │   │   ├── imagen_pytorch.py   # Core Imagen model
-│   │   ├── joint_imagen*.py   # Joint image-label generation
+│   │   ├── joint_imagen.py     # Joint image-label generation
 │   │   └── trainer.py          # Trainer
-│   └── train.py                # Training script
+│   ├── scripts/                 # Per-dataset training/inference scripts
+│   │   ├── consep/
+│   │   ├── glysac/
+│   │   └── puma/
+│   ├── train.py                # Training script
+│   ├── test.py                 # Inference / generation script
+│   └── requirements.txt        # Python dependencies
 ├── data/                        # Data directory
 │   └── puma/                   # PUMA dataset split
 │       ├── train.txt           # Training set list
 │       └── test.txt            # Test set list
 └── val/                         # Evaluation scripts directory
-    ├── compute_stats_vary_12.17_single_type.py  # Downstream metrics evaluation
+    ├── compute_stats_vary.py   # Downstream metrics evaluation
     └── sh/                     # Evaluation script collection
-        ├── metrics*.sh        # Metrics calculation for each dataset
-        └── run_tile*.sh       # Tile-based inference scripts
+        ├── metrics.sh          # Metrics calculation
+        └── run_tile.sh         # Tile-based inference
 ```
 
 ## Downstream Evaluation Metrics
@@ -108,7 +114,7 @@ The project implements downstream task evaluation metrics used in the paper to m
 
 ### Evaluation Functions
 
-`val/compute_stats_vary_12.17_single_type.py` provides comprehensive evaluation functions:
+`val/compute_stats_vary.py` provides comprehensive evaluation functions:
 
 - **Instance Statistics**: `run_nuclei_inst_stat()` - Instance-level segmentation evaluation
 - **Type Statistics**: `run_nuclei_type_stat()` - Type classification evaluation
@@ -142,22 +148,18 @@ DCDiffusion adopts a joint generation architecture:
 
 ## Evaluation Script Usage
 
-### CoNSeP Dataset Evaluation
+The scripts under `val/sh/` are parameterized via in-file configuration (paths, epochs, etc.). Edit the variables at the top of each script before running.
+
+### Tile-based Inference
 ```bash
 cd val/sh
-bash metrics_f_consep.sh
+bash run_tile.sh
 ```
 
-### GLySAC Dataset Evaluation
+### Metrics Calculation
 ```bash
 cd val/sh
-bash metrics_f_glysac.sh
-```
-
-### PUMA Dataset Evaluation
-```bash
-cd val/sh
-bash metrics_f_puma.sh
+bash metrics.sh
 ```
 
 ## Technical Features
@@ -206,9 +208,9 @@ Main dependencies:
 - `datasets/`: CoNSeP, GLySAC, PUMA dataset loaders
 
 ### Evaluation Tools
-- `val/compute_stats.py`: Paper metrics implementation
-- `val/sh/metrics*.sh`: Evaluation scripts for each dataset
-- `val/sh/run_tile*.sh`: Tile-based inference scripts
+- `val/compute_stats_vary.py`: Paper metrics implementation
+- `val/sh/metrics.sh`: Metrics calculation script
+- `val/sh/run_tile.sh`: Tile-based inference script
 
 ### Data Files
 - `data/puma/train.txt`: PUMA training set split
