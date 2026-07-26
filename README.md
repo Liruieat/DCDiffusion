@@ -5,6 +5,10 @@ Official implementation of **"[Diversity Controlled Diffusion Model for Nuclear 
 
 DCDiffusion is a diffusion model-based data augmentation framework designed for medical image nuclei segmentation tasks. This framework helps improve the performance of downstream segmentation models by generating high-quality synthetic training data.
 
+## Method Overview
+
+![Method Overview](method_overview.jpg)
+
 ## Project Overview
 
 This project leverages state-of-the-art diffusion model techniques to generate synthetic medical image nuclei data for data augmentation. Through joint training of image and label generation processes, DCDiffusion can produce realistic nuclei images along with their corresponding segmentation masks and type labels, effectively addressing the problem of scarce medical image data.
