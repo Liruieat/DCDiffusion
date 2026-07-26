@@ -1,5 +1,9 @@
 # DCDiffusion
 
+Official implementation of **"Diversity Controlled Diffusion Model for Nuclear Instance Segmentation in Pathology"**  
+(IEEE Transactions on Multimedia).  
+Paper: https://ieeexplore.ieee.org/document/11614762
+
 DCDiffusion is a diffusion model-based data augmentation framework designed for medical image nuclei segmentation tasks. This framework helps improve the performance of downstream segmentation models by generating high-quality synthetic training data.
 
 ## Project Overview
